@@ -12,11 +12,14 @@ class Solution {
     }
     public int helper(int st,int end,int[] nums){
         int[] a=new int[nums.length-1];
-        a[0]=nums[st];
-        a[1]=Math.max(nums[st],nums[st+1]);
+        int prev2=nums[st];
+        int prev1=Math.max(nums[st],nums[st+1]);
+        int current=prev1;
         for(int i=st+2, j=2; i<=end ;i++, j++){
-            a[j]=Math.max(a[j-1],a[j -2]+nums[i]);
+            current=Math.max(prev1,prev2+nums[i]);
+            prev2=prev1;
+            prev1=current;
         }
-        return a[nums.length-2];
+        return current;
     }
 }
