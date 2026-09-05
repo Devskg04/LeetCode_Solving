@@ -7,7 +7,6 @@ class Solution {
             return Math.max(nums[0],nums[1]);
         }
         int n=nums.length;
-        int[] a=new int[n];
         int prev2=nums[0];
         int prev1=Math.max(nums[0],nums[1]);
         int curr=prev1;
