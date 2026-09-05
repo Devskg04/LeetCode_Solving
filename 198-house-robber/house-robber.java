@@ -8,12 +8,14 @@ class Solution {
         }
         int n=nums.length;
         int[] a=new int[n];
-        a[0]=nums[0];
-        a[1]=Math.max(nums[0],nums[1]);
-
+        int prev2=nums[0];
+        int prev1=Math.max(nums[0],nums[1]);
+        int curr=prev1;
         for(int i=2;i<n;i++){
-            a[i]=Math.max(a[i-1],a[i-2]+nums[i]);
+            curr=Math.max(prev1,prev2+nums[i]);
+            prev2=prev1;
+            prev1=curr;
         }
-        return a[n-1];
+        return curr;
     }
 }
